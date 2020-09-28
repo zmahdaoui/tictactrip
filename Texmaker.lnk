@@ -1,0 +1,45 @@
+import pandas as pd
+
+cities = pd.read_csv("data/cities.csv")
+providers = pd.read_csv("data/providers.csv")
+stations = pd.read_csv("data/stations.csv")
+ticket_data = pd.read_csv("data/ticket_data.csv")
+
+#prix min
+minPrice = ticket_data['price_in_cents'].min()
+print("min price in cents : "+str(minPrice))
+
+#prix max
+maxPrice = ticket_data['price_in_cents'].max()
+print("max price in cents : "+str(maxPrice))
+
+#prix moyen
+meanPrice = ticket_data['price_in_cents'].mean()
+print("mean price in cents : "+str(meanPrice))
+
+#dataframe contenant les différences entre les dates de départs et les date d'arrivées
+ticket_data['diff_dates'] = pd.to_datetime(ticket_data['arrival_ts']) - pd.to_datetime(ticket_data['departure_ts'])
+
+ticket_data.dtypes
+
+#data = ticket_data.groupby(['o_station','d_station']).agg({'diff_dates':['min','max','mean']})
+
+#data.first()
+print(data)
+
+#print(ticket_data)
+"""
+#durée min par trajet
+print(ticket_data['diff_dates'].min()) 
+
+#durée max par trajet
+print(ticket_data['diff_dates'].max()) 
+
+#durée moyenne par trajet
+print(ticket_data['diff_dates'].mean()) 
+"""
+
+            
+
+
+
